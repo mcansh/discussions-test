@@ -1,12 +1,13 @@
 import Stream from "stream";
 import { promisify } from "util";
 
-import { graphql } from "@octokit/graphql";
+import { Octokit as createOctokit } from "@octokit/core";
 import gunzip from "gunzip-maybe";
 import tar from "tar-stream";
 import fetch from "node-fetch";
 import undoc from "@mcansh/undoc";
 import parseAttributes from "gray-matter";
+import { throttling } from "@octokit/plugin-throttling";
 
 const { findMatchingEntries, getPackage } = undoc;
 
@@ -32,9 +33,28 @@ let [OWNER, REPO] = process.env.GITHUB_REPOSITORY.split("/");
 
 let gql = String.raw;
 
-let octokit = graphql.defaults({
-  headers: {
-    authorization: `token ${process.env.GITHUB_TOKEN}`,
+let Octokit = createOctokit.plugin(throttling);
+
+let octokit = new Octokit({
+  auth: process.env.GITHUB_TOKEN,
+  throttle: {
+    onRateLimit: (retryAfter, options, octokit) => {
+      octokit.log.warn(
+        `Request quota exhausted for request ${options.method} ${options.url}`
+      );
+
+      if (options.request.retryCount === 0) {
+        // only retries once
+        octokit.log.info(`Retrying after ${retryAfter} seconds!`);
+        return true;
+      }
+    },
+    onSecondaryRateLimit: (retryAfter, options, octokit) => {
+      // does not retry, only logs a warning
+      octokit.log.warn(
+        `SecondaryRateLimit detected for request ${options.method} ${options.url}`
+      );
+    },
   },
 });
 
@@ -53,7 +73,6 @@ async function getDocs() {
   }
 
   let existingDiscussions = await getExistingDiscussions();
-  console.dir(existingDiscussions, { depth: null });
 
   await findMatchingEntries(stream, "/docs", async (entry) => {
     if (!entry.path.endsWith(".md")) {
@@ -78,7 +97,7 @@ async function getDocs() {
 }
 
 async function fetchDiscussions(results = [], cursor) {
-  let result = await octokit(
+  let result = await octokit.graphql(
     gql`
       query LIST_DISCUSSIONS(
         $name: String!
@@ -140,7 +159,7 @@ async function parseDoc(entry) {
 }
 
 async function createDiscussion(title, url) {
-  let result = await octokit(
+  let result = await octokit.graphql(
     gql`
       mutation CREATE_DISCUSSION(
         $repositoryId: ID!
