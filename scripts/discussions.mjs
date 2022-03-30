@@ -63,29 +63,34 @@ async function getDocs() {
 
     let { title, url } = await parseDoc(entry);
 
-    if (
-      existingDiscussions.find((discussion) => discussion.node.title === title)
-    ) {
-      console.log(`${title} already exists`);
+    let exists = existingDiscussions.find(
+      (discussion) => discussion.node.title === title
+    );
+    if (exists) {
+      console.log(
+        `A discussion for ${title} already exists; ${exists.node.url}`
+      );
       return;
     }
 
-    // await createDiscussion(title, url);
+    await createDiscussion(title, url);
   });
 }
 
-async function getExistingDiscussions() {
+async function fetchDiscussions(results = [], cursor) {
   let result = await octokit(
     gql`
       query LIST_DISCUSSIONS(
         $name: String!
         $owner: String!
         $categoryId: ID!
+        $cursor: String
       ) {
         repository(name: $name, owner: $owner) {
-          discussions(categoryId: $categoryId, first: 100) {
+          discussions(categoryId: $categoryId, first: 20, after: $cursor) {
             pageInfo {
               endCursor
+              hasNextPage
             }
             edges {
               node {
@@ -101,16 +106,30 @@ async function getExistingDiscussions() {
       name: REPO,
       owner: OWNER,
       categoryId: process.env.GITHUB_CATEGORY_ID,
+      cursor,
     }
   );
 
-  if (!result?.repository?.discussions?.edges) {
+  results.push(...result.repository.discussions.edges);
+
+  if (result.repository.discussions.pageInfo.hasNextPage) {
+    await fetchDiscussions(
+      results,
+      result.repository.discussions.pageInfo.endCursor
+    );
+  }
+
+  return results;
+}
+
+async function getExistingDiscussions() {
+  try {
+    return fetchDiscussions();
+  } catch (error) {
     throw new Error(
       "🚨 There was a problem fetching the discussions. Please try again later."
     );
   }
-
-  return result.repository.discussions.edges;
 }
 
 async function parseDoc(entry) {
