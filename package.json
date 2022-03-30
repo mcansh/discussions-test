@@ -1,0 +1,21 @@
+{
+  "name": "@mcansh/discussions-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "discussions": "node ./scripts/discussions.mjs"
+  },
+  "repository": "https://github.com/mcansh/discussions-test.git",
+  "author": "Logan McAnsh <logan@mcan.sh> (https://mcan.sh)",
+  "license": "MIT",
+  "dependencies": {
+    "@mcansh/undoc": "0.7.0",
+    "@octokit/graphql": "^4.8.0",
+    "@ryanflorence/md": "7.1.0",
+    "gray-matter": "4.0.3",
+    "gunzip-maybe": "^1.4.2",
+    "node-fetch": "^2.6.7",
+    "tar-stream": "^2.2.0"
+  }
+}
