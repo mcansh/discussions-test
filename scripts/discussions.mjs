@@ -60,8 +60,7 @@ let octokit = new Octokit({
 
 async function getDocs() {
   let stream = await getPackage(
-    // process.env.GITHUB_REPOSITORY,
-    "remix-run/remix",
+    process.env.GITHUB_REPOSITORY,
     "refs/heads/main"
   );
 
