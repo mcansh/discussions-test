@@ -1,6 +1,10 @@
 ---
 title: Routing
-description: In Remix, routes are more than just the page. When routes are nested we're able to know a little more about your app than just a single page, and do a lot more because of it.
+description: >-
+  In Remix, routes are more than just the page. When routes are nested we're
+  able to know a little more about your app than just a single page, and do a
+  lot more because of it.
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/198'
 ---
 
 # Routing

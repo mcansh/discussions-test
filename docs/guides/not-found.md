@@ -1,5 +1,6 @@
 ---
 title: Not Found Handling
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/193'
 ---
 
 # Not Found (404) Handling

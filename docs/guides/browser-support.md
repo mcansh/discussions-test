@@ -1,5 +1,6 @@
 ---
 title: Browser Support
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/178'
 ---
 
 # Browser Support

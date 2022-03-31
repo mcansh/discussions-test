@@ -1,5 +1,6 @@
 ---
 title: Environment Variables
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/187'
 ---
 
 # Environment Variables

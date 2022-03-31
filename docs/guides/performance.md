@@ -1,5 +1,6 @@
 ---
 title: Performance
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/195'
 ---
 
 # Performance

@@ -1,8 +1,11 @@
 ---
 title: Contributing
-description: Thank you for contributing to Remix! Here's everything you need to know before you open a pull request.
+description: >-
+  Thank you for contributing to Remix! Here's everything you need to know before
+  you open a pull request.
 order: 6
 toc: false
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/209'
 ---
 
 # Contributing to Remix

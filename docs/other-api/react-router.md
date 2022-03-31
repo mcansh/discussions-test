@@ -1,6 +1,7 @@
 ---
 title: React Router v6
 toc: false
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/207'
 ---
 
 # React Router v6

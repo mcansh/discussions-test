@@ -1,6 +1,7 @@
 ---
 title: FAQs
 description: Frequently Asked Questions about Remix
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/210'
 ---
 
 # Frequently Asked Questions

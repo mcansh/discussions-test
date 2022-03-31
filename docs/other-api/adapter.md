@@ -1,6 +1,7 @@
 ---
-title: "@remix-run/{adapter}"
+title: '@remix-run/{adapter}'
 order: 2
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/202'
 ---
 
 # Server Adapters

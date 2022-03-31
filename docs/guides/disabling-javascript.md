@@ -1,6 +1,7 @@
 ---
 title: Disabling JavaScript
 toc: false
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/186'
 ---
 
 # Disabling JavaScript

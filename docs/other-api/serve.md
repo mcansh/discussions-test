@@ -1,6 +1,7 @@
 ---
-title: "@remix-run/serve"
+title: '@remix-run/serve'
 order: 3
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/208'
 ---
 
 # Remix App Server

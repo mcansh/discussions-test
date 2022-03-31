@@ -1,6 +1,7 @@
 ---
 title: Remix Package
 order: 2
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/174'
 ---
 
 # Remix Package

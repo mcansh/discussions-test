@@ -1,5 +1,6 @@
 ---
 title: Accessibility
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/175'
 ---
 
 # Accessibility

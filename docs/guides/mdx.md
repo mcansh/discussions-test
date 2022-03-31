@@ -1,6 +1,9 @@
 ---
 title: MDX
-description: Remix makes integrating MDX into your project a breeze with built in routes and "import" support.
+description: >-
+  Remix makes integrating MDX into your project a breeze with built in routes
+  and "import" support.
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/191'
 ---
 
 # MDX

@@ -1,6 +1,7 @@
 ---
 title: Philosophy
 order: 1
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/214'
 ---
 
 # Philosophy

@@ -1,5 +1,6 @@
 ---
 title: Web Fetch API
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/204'
 ---
 
 # Web Fetch API

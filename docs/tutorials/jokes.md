@@ -1,6 +1,7 @@
 ---
 title: Jokes App
 order: 2
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/219'
 ---
 
 # Jokes App Tutorial

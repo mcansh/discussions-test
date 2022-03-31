@@ -1,5 +1,6 @@
 ---
 title: Gotchas
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/211'
 ---
 
 # Gotchas

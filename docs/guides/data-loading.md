@@ -1,6 +1,10 @@
 ---
 title: Data Loading
-description: One of the primary features of Remix is simplifying interactions with the server to get data into components. This document will help you get the most out of data loading in Remix.
+description: >-
+  One of the primary features of Remix is simplifying interactions with the
+  server to get data into components. This document will help you get the most
+  out of data loading in Remix.
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/182'
 ---
 
 # Data Loading

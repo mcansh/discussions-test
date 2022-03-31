@@ -4,6 +4,7 @@ order: 1
 description: Learn how to Build Better Websites with Remix.
 toc: false
 hidden: true
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/201'
 ---
 
 # Remix Docs

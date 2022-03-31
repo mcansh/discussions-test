@@ -1,6 +1,7 @@
 ---
 title: Technical Explanation
 order: 2
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/216'
 ---
 
 # Technical Explanation

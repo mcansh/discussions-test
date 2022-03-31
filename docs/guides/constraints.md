@@ -1,5 +1,6 @@
 ---
 title: Module Constraints
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/181'
 ---
 
 # Module Constraints

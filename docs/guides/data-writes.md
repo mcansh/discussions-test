@@ -1,5 +1,6 @@
 ---
 title: Data Writes
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/183'
 ---
 
 # Data Writes

@@ -1,5 +1,6 @@
 ---
 title: TypeScript
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/200'
 ---
 
 # TypeScript

@@ -1,6 +1,7 @@
 ---
 title: Developer Blog
 order: 1
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/217'
 ---
 
 # Quickstart

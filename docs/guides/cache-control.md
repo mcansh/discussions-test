@@ -1,6 +1,7 @@
 ---
 title: Cache-Control
 hidden: true
+discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/179'
 ---
 
 # Cache Control
