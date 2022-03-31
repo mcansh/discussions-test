@@ -15,6 +15,7 @@
     "@octokit/graphql": "^4.8.0",
     "@octokit/plugin-throttling": "3.6.2",
     "@ryanflorence/md": "7.1.0",
+    "fs-extra": "10.0.1",
     "gray-matter": "4.0.3",
     "gunzip-maybe": "^1.4.2",
     "node-fetch": "^2.6.7",

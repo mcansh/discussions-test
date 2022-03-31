@@ -1,5 +1,7 @@
 import Stream from "stream";
 import { promisify } from "util";
+import path from "path";
+import fse from "fs-extra";
 
 import { Octokit as createOctokit } from "@octokit/core";
 import gunzip from "gunzip-maybe";
@@ -79,11 +81,16 @@ async function getDocs() {
       return;
     }
 
-    let { title, url } = await parseDoc(entry);
+    let file = parseAttributes(entry.content);
+    let { data } = file;
+    let docUrl = new URL(entry.path, "https://remix.run").toString();
+
+    let title = data.title || entry.path.replace(/^\/docs/, "");
 
     let exists = existingDiscussions.find(
-      (discussion) => discussion.node.title === title
+      (discussion) => discussion.node.url === data.discussionUrl
     );
+
     if (exists) {
       console.log(
         `A discussion for ${title} already exists; ${exists.node.url}`
@@ -91,7 +98,17 @@ async function getDocs() {
       return;
     }
 
-    await createDiscussion(title, url);
+    let discussionUrl = await createDiscussion(title, docUrl);
+
+    let filepath = path.join(process.cwd(), entry.path);
+
+    fse.writeFileSync(
+      filepath,
+      file.stringify({
+        ...data,
+        discussionUrl,
+      })
+    );
   });
 }
 
@@ -150,14 +167,8 @@ async function getExistingDiscussions() {
   }
 }
 
-async function parseDoc(entry) {
-  let { data } = parseAttributes(entry.content);
-  let title = data.title || entry.path.replace(/^\/docs/, "");
-  let url = new URL(entry.path, "https://remix.run");
-  return { title, url: url.toString() };
-}
-
 async function createDiscussion(title, url) {
+  console.log(`Creating discussion for ${title}`);
   let result = await octokit.graphql(
     gql`
       mutation CREATE_DISCUSSION(
@@ -176,7 +187,6 @@ async function createDiscussion(title, url) {
         ) {
           discussion {
             url
-            title
           }
         }
       }
@@ -189,6 +199,8 @@ async function createDiscussion(title, url) {
     }
   );
 
-  console.log(result.createDiscussion.discussion);
+  console.log(`Created discussion for ${title}`);
+
+  return result.createDiscussion.discussion.url;
 }
 getDocs();
