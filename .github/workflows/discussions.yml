@@ -35,6 +35,7 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REPOSITORY_ID: ${{ secrets.REPOSITORY_ID }}
           GITHUB_CATEGORY_ID: ${{ secrets.CATEGORY_ID }}
+          GITHUB_SHA: ${{ github.sha }}
 
       - name: Commit
         run: |
