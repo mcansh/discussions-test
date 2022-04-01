@@ -8,7 +8,8 @@ on:
       - "docs/**"
 
 jobs:
-  format:
+  discussions:
+    name: Update Doc Discussions
     if: github.repository == 'mcansh/discussions-test'
     runs-on: ubuntu-latest
 
