@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "discussions": "node ./scripts/discussions.mjs"
+    "discussions": "node -r dotenv/config ./scripts/discussions.mjs"
   },
   "repository": "https://github.com/mcansh/discussions-test.git",
   "author": "Logan McAnsh <logan@mcan.sh> (https://mcan.sh)",
@@ -20,5 +20,8 @@
     "gunzip-maybe": "^1.4.2",
     "node-fetch": "^3.2.3",
     "tar-stream": "^2.2.0"
+  },
+  "devDependencies": {
+    "dotenv": "16.0.0"
   }
 }

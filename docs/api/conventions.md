@@ -1,5 +1,5 @@
 ---
-title: Conventions
+title: Conventions (updated)
 order: 1
 discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/172'
 ---
