@@ -1,5 +1,5 @@
 ---
-title: Remix Package
+title: Remix baby
 order: 2
 discussionUrl: 'https://github.com/mcansh/discussions-test/discussions/174'
 ---
