@@ -92,9 +92,16 @@ async function getDocs() {
     );
 
     if (exists) {
-      console.log(
-        `A discussion for ${title} already exists; ${exists.node.url}`
-      );
+      if (exists.node.title === data.title) {
+        console.log(
+          `A discussion for ${title} already exists; ${exists.node.url}`
+        );
+      } else {
+        console.log(
+          `A discussion for ${title} already exists, but with a different title; ${exists.node.url}`
+        );
+        await updateDiscussion(exists.node.id, title);
+      }
       return;
     }
 
@@ -131,6 +138,7 @@ async function fetchDiscussions(results = [], cursor) {
               node {
                 title
                 url
+                id
               }
             }
           }
@@ -165,6 +173,42 @@ async function getExistingDiscussions() {
       "🚨 There was a problem fetching the discussions. Please try again later."
     );
   }
+}
+
+// for now we only update the discussion title,
+// but we should be able to take in the current
+// discussion body and just replace the doc url
+async function updateDiscussion(discussionId, title) {
+  console.log(`Updating discussion ${discussionId}`);
+
+  let result = await octokit.graphql(
+    gql`
+      mutation CREATE_DISCUSSION(
+        $title: String!
+        $categoryId: ID!
+        $discussionId: ID!
+      ) {
+        updateDiscussion(
+          input: {
+            title: $title
+            categoryId: $categoryId
+            discussionId: $discussionId
+          }
+        ) {
+          discussion {
+            url
+          }
+        }
+      }
+    `,
+    {
+      categoryId: process.env.GITHUB_CATEGORY_ID,
+      title,
+      discussionId,
+    }
+  );
+
+  console.log(`Updated discussion for ${title}`);
 }
 
 async function createDiscussion(title, url) {
