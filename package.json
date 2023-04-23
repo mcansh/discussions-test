@@ -10,7 +10,7 @@
   "author": "Logan McAnsh <logan@mcan.sh> (https://mcan.sh)",
   "license": "MIT",
   "dependencies": {
-    "@mcansh/undoc": "0.7.0",
+    "@mcansh/undoc": "0.8.0",
     "@octokit/core": "3.6.0",
     "@octokit/graphql": "^4.8.0",
     "@octokit/plugin-throttling": "3.6.2",
